@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Khulasaa - Speak Truth. Stay Hidden.</title>
+  <meta name="description" content="AI-powered anonymous corruption reporting platform for Nepal.">
+  <link rel="stylesheet" href="/static/styles.css?v=20260524-ui2">
+  <script defer src="/static/app.js?v=20260524-ui2"></script>
+</head>
+<body data-page="home">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">K</span><span>Khulasaa</span></a>
+    <nav class="nav">
+      <a href="/" data-nav="home">Home</a>
+      <a href="/static/feed.html" data-nav="feed">Reports</a>
+      <a href="/static/heatmap.html" data-nav="heatmap">Heatmap</a>
+      <a href="/static/scorecards.html" data-nav="scorecards">Scorecards</a>
+      <a href="/static/ciaa.html" data-nav="ciaa">CIAA</a>
+      <a href="/static/admin.html" data-nav="admin">Intel</a>
+    </nav>
+  </header>
+
+  <div class="ticker" aria-label="Live report ticker">
+    <div class="ticker-track">
+      <span>KHU-0341 - Bribery reported at Malpot Office, Kathmandu</span>
+      <span>KHU-0339 - Extortion case flagged, Yatayat Lalitpur - Escalated to CIAA</span>
+      <span>KHU-0337 - Fraud report verified, Customs Birgunj - 24 upvotes</span>
+      <span>KHU-0335 - Nepotism allegation, District Admin Pokhara</span>
+      <span>KHU-0332 - Embezzlement evidence submitted, Revenue Office Biratnagar</span>
+      <span>KHU-0341 - Bribery reported at Malpot Office, Kathmandu</span>
+      <span>KHU-0339 - Extortion case flagged, Yatayat Lalitpur - Escalated to CIAA</span>
+      <span>KHU-0337 - Fraud report verified, Customs Birgunj - 24 upvotes</span>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Anonymous civic reporting for Nepal</p>
+        <h1><span class="gradient-text">Khulasaa</span></h1>
+        <p class="lead">"Speak Truth. Stay Hidden."</p>
+        <p class="muted" style="max-width:720px;margin:14px auto 0;font-size:17px">An AI-powered corruption reporting platform that helps citizens disclose incidents safely, verify evidence, and build public accountability without exposing identity.</p>
+
+        <div class="hero-stats">
+          <div><span id="stat-reports">0</span><small>Reports Filed</small></div>
+          <div><span id="stat-institutions">0</span><small>Institutions Tracked</small></div>
+          <div><span id="stat-bribes">0</span><small>Reported NPR</small></div>
+          <div><span id="stat-hotspots">0</span><small>AI Hotspots</small></div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="/static/submit.html">Submit Anonymous Report</a>
+          <a class="btn" href="/static/feed.html">Browse Disclosures</a>
+        </div>
+
+        <div class="trust-row">
+          <span>Zero PII collected</span>
+          <span>Encrypted evidence flow</span>
+          <span>Anonymous sessions only</span>
+          <span>AI-verified submissions</span>
+        </div>
+      </div>
+
+      <div class="hero-panel" aria-label="Live transparency map preview">
+        <div class="panel-top">
+          <span class="live-chip"><span class="live-dot"></span> Live transparency map</span>
+          <span class="secure-chip">District-level signals</span>
+        </div>
+        <div class="mini-map" id="mini-map"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p class="eyebrow">How Khulasaa works</p>
+        <h2>Three steps from observation to accountability.</h2>
+        <p>A calm, secure workflow designed for citizens who need protection first and evidence integrity second.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon">01</div><h3>Submit safely</h3><p>Share institution, district, description, location, amount, and optional evidence without revealing your identity.</p></article>
+        <article class="feature-card"><div class="feature-icon">02</div><h3>AI verifies quality</h3><p>Duplicate detection and confidence scoring help separate credible civic signals from noisy submissions.</p></article>
+        <article class="feature-card"><div class="feature-icon">03</div><h3>Public pressure builds</h3><p>Reports appear in the feed, update scorecards, and strengthen the heatmap for accountability.</p></article>
+      </div>
+    </section>
+
+    <section class="grid-two">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">Live disclosures</p>
+          <h2>Anonymous citizen reports, scored by AI.</h2>
+        </div>
+        <div class="stack" id="recent-reports"></div>
+      </div>
+      <aside class="side-panel">
+        <p class="eyebrow">Trust model</p>
+        <h2>Safety before exposure.</h2>
+        <ul class="check-list">
+          <li>No identity fields are required in the reporting flow.</li>
+          <li>Evidence is referenced separately from citizen identity.</li>
+          <li>AI scoring helps strengthen credible submissions.</li>
+          <li>Public scorecards build institutional transparency.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p class="eyebrow">Transparency intelligence</p>
+        <h2>Institution scorecards, public pressure, safer reporting.</h2>
+      </div>
+      <div class="grid-three">
+        <article class="intel-card"><h3>District analytics</h3><div class="sparkline"></div><p>Map previews and filters help identify repeated pressure points across Nepal.</p></article>
+        <article class="intel-card"><h3>Anonymous voices</h3><p>"For the first time, I could report what happened without choosing between truth and safety."</p></article>
+        <article class="intel-card"><h3>Start safely</h3><p>Every protected report makes silence less powerful and accountability more visible.</p><a class="btn primary" href="/static/submit.html">Start Secure Report</a></article>
+      </div>
+    </section>
+  </main>
+
+  <a class="fab" href="/static/submit.html">+</a>
+  <nav class="bottom-nav">
+    <a href="/" data-nav="home">Home</a>
+    <a href="/static/submit.html" data-nav="submit">Report</a>
+    <a href="/static/feed.html" data-nav="feed">Feed</a>
+    <a href="/static/heatmap.html" data-nav="heatmap">Map</a>
+    <a href="/static/admin.html" data-nav="admin">Intel</a>
+  </nav>
+  <footer class="footer">Khulasaa protects courage with anonymity, AI, and transparent public evidence.</footer>
+</body>
+</html>

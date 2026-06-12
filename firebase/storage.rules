@@ -1,0 +1,14 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /evidence/{reportId}/{fileName} {
+      // Allow upload of images and videos under 10MB
+      allow write: if request.auth != null
+                   && request.resource.size < 10 * 1024 * 1024
+                   && (request.resource.contentType.matches('image/.*') || request.resource.contentType.matches('video/.*'));
+      
+      // Allow public read of evidence files so people can inspect claims
+      allow read: if true;
+    }
+  }
+}

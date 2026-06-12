@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Allow anyone to read institutional scorecards
+    // Scorecards are updated nightly by the secure backend scheduler only
+    match /scorecards/{scorecardId} {
+      allow read: if true;
+      allow write: if false; // Only admin SDK (backend) can modify scorecards
+    }
+
+    // Reports collection rules
+    match /reports/{reportId} {
+      // Anyone can read validated reports
+      allow read: if resource.data.status == "validated" || resource.data.status == "flagged";
+      
+      // Anonymous users (or named users) can submit reports
+      allow create: if request.auth != null 
+                    && request.resource.data.keys().hasAll(['institution', 'district', 'description', 'bribeAmount', 'timestamp', 'status', 'upvotes'])
+                    && request.resource.data.description is string 
+                    && request.resource.data.description.size() > 10 
+                    && request.resource.data.upvotes == 0
+                    && request.resource.data.status == "pending"; // Initially pending ML validation
+
+      // Only upvote count can be updated by citizens
+      allow update: if request.auth != null 
+                    && request.resource.data.upvotes == resource.data.upvotes + 1
+                    && request.resource.data.description == resource.data.description
+                    && request.resource.data.institution == resource.data.institution
+                    && request.resource.data.district == resource.data.district;
+      
+      // Nobody can delete reports (whistleblowing integrity)
+      allow delete: if false;
+    }
+  }
+}

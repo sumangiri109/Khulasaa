@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Civic Feed - KHULASAA</title>
+  <link rel="stylesheet" href="/static/styles.css?v=20260524-ui2">
+  <script defer src="/static/app.js?v=20260524-ui2"></script>
+</head>
+<body data-page="feed">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">K</span><span>KHULASAA</span></a>
+    <nav class="nav"><a href="/" data-nav="home">Home</a><a href="/static/submit.html" data-nav="submit">Report</a><a href="/static/feed.html" data-nav="feed">Feed</a><a href="/static/heatmap.html" data-nav="heatmap">Map</a><a href="/static/scorecards.html" data-nav="scorecards">Scores</a><a href="/static/admin.html" data-nav="admin">Intel</a></nav>
+  </header>
+  <main>
+    <section class="page-head">
+      <p class="eyebrow">Public civic signal</p>
+      <h1>Anonymous reports, community validation, AI credibility.</h1>
+      <p>A Reddit/Twitter-inspired disclosure stream with institution tags, upvotes, evidence status, and live credibility scoring.</p>
+    </section>
+    <section class="toolbar">
+      <div class="filters"><input id="search" type="search" placeholder="Search reports, districts, institutions"><select id="district-filter"><option value="">All districts</option></select></div>
+      <a class="btn danger" href="/static/submit.html">Report Corruption</a>
+    </section>
+    <section class="grid-two">
+      <div class="stack" id="report-list"></div>
+      <aside class="side-panel"><p class="eyebrow">Live ticker</p><h2>Transparency pulse</h2><div class="timeline"><article><h3>AI credibility online</h3><p>Confidence scores update with evidence and upvotes.</p></article><article><h3>Community validation</h3><p>Public upvotes raise civic corroboration.</p></article><article><h3>Escalation watch</h3><p>High-confidence disclosures are monitored.</p></article></div></aside>
+    </section>
+  </main>
+  <a class="fab" href="/static/submit.html">+</a>
+  <nav class="bottom-nav"><a href="/" data-nav="home">Home</a><a href="/static/submit.html" data-nav="submit">Report</a><a href="/static/feed.html" data-nav="feed">Feed</a><a href="/static/heatmap.html" data-nav="heatmap">Map</a><a href="/static/admin.html" data-nav="admin">Intel</a></nav>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Report Detail — Khulasaa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/styles.css?v=20260524-ui2">
+<style>
+.rd-wrap{max-width:800px;margin:32px auto 64px}
+.rd-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
+.rd-title{font-size:1.8rem;margin-bottom:6px}
+.rd-meta{display:flex;gap:12px;font-size:.85rem;color:var(--ink-secondary);align-items:center}
+.rd-body{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px}
+.rd-desc{font-size:1.05rem;line-height:1.7;color:var(--ink);margin-bottom:32px;white-space:pre-wrap}
+.rd-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;padding:20px;background:var(--surface-alt);border-radius:var(--radius-sm)}
+.rd-box .rb-lab{font-size:.78rem;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.rd-box .rb-val{font-size:.95rem;font-weight:600}
+.ev-section{border-top:1px solid var(--border);padding-top:24px;margin-top:24px}
+.ev-grid{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+.ev-card{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all var(--transition)}
+.ev-card:hover{border-color:var(--accent);background:var(--accent-bg)}
+.ev-card .ec-ic{font-size:1.4rem}.ev-card .ec-tt{font-size:.85rem;font-weight:600}.ev-card .ec-st{font-size:.72rem;color:var(--green)}
+.conf-box{display:flex;align-items:center;gap:24px;padding:24px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);margin-top:24px}
+.cb-text h3{font-size:1.1rem;margin-bottom:6px}.cb-text p{font-size:.85rem;color:var(--ink-secondary);line-height:1.5;margin-bottom:12px}
+.cb-list{font-size:.82rem;display:flex;flex-direction:column;gap:4px}
+.cb-list div{display:flex;align-items:center;gap:6px}
+.cb-list div::before{content:'✓';color:var(--green);font-weight:700}
+.uv-act{margin-top:32px;display:flex;align-items:center;gap:16px}
+.uv-act p{font-size:.85rem;color:var(--ink-secondary);flex:1}
+#main-arc{transition:stroke-dasharray 1s ease-out}
+.modal-body{text-align:center;padding:24px 0}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="container flex-between">
+<a href="/static/index.html" class="nav-brand"><span>🔍</span> Khulasaa</a>
+<div class="nav-links"><a href="/static/index.html">Home</a><a href="/static/feed.html">Reports</a><a href="/static/heatmap.html">Heatmap</a><a href="/static/scorecards.html">Scorecards</a><a href="/static/ciaa.html">CIAA</a><button id="theme-btn" onclick="toggleTheme()">☀️</button></div>
+</div></nav>
+
+<div class="container rd-wrap">
+  <a href="/static/feed.html" class="btn btn-ghost btn-sm mb-16" style="padding-left:0">← Back to Feed</a>
+  
+  <div class="rd-head">
+    <div>
+      <h1 class="rd-title">Extortion by License Examiner</h1>
+      <div class="rd-meta">
+        <span class="badge badge-green">Verified</span>
+        <span>ID: KHU-2024-0341</span>
+        <span>•</span>
+        <span>2 days ago</span>
+      </div>
+    </div>
+    <div style="text-align:right">
+      <button class="btn btn-secondary btn-sm" onclick="copyLink()">🔗 Share Link</button>
+    </div>
+  </div>
+
+  <div class="rd-body">
+    <div class="rd-desc">I completed my practical driving test for a two-wheeler license today. I passed the figure-8 and the ramp test successfully without putting my foot down. 
+
+However, the license examiner took me aside and claimed I touched the line on the figure-8. He said he would fail me unless I paid a "facilitation fee" of Rs. 15,000 right there. When I asked for a receipt, he threatened to ban me from re-taking the test for 6 months.
+
+I have attached an audio recording of the conversation where the amount is clearly demanded.</div>
+
+    <div class="rd-grid">
+      <div class="rd-box"><div class="rb-lab">Institution</div><div class="rb-val">Yatayat Office, Lalitpur</div></div>
+      <div class="rd-box"><div class="rb-lab">Location</div><div class="rb-val">Lalitpur, Bagmati</div></div>
+      <div class="rd-box"><div class="rb-lab">Category</div><div class="rb-val">⚠️ Extortion</div></div>
+      <div class="rd-box"><div class="rb-lab">Amount Demanded</div><div class="rb-val">NPR 15,000</div></div>
+    </div>
+
+    <div class="ev-section">
+      <h4 style="margin-bottom:4px">Attached Evidence</h4>
+      <p class="text-secondary" style="font-size:.85rem">Evidence files are end-to-end encrypted. Previews are restricted.</p>
+      <div class="ev-grid">
+        <div class="ev-card" onclick="previewEvidence('audio')">
+          <div class="ec-ic">🎙️</div><div><div class="ec-tt">Audio Recording</div><div class="ec-st">Verified Encrypted File</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conf-box">
+    <div class="conf-arc-wrap" style="width:100px;height:100px;flex-shrink:0">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border)" stroke-width="8"/>
+        <circle id="main-arc" cx="50" cy="50" r="42" fill="none" stroke="var(--green)" stroke-width="8" stroke-linecap="round" stroke-dasharray="0 263.89"/>
+      </svg>
+      <div class="conf-arc-num" id="conf-num" style="color:var(--green)">0%</div>
+    </div>
+    <div class="cb-text">
+      <h3>82% Confidence Score</h3>
+      <p>This report has crossed the 80% threshold and has been <strong>auto-escalated to the CIAA</strong>. Reference: <code>CIAA-2024-KTM-0892</code>.</p>
+      <div class="cb-list">
+        <div>Base anonymous credibility (52%)</div>
+        <div>Encrypted evidence attached (+14%)</div>
+        <div>Community corroborations (+16%)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uv-act">
+    <button class="btn btn-primary" id="main-uvbtn" onclick="mainUpvote()" style="padding:12px 24px;font-size:1rem;position:relative;overflow:visible">
+      👍 Corroborate Report (<span id="uv-count">47</span>)
+    </button>
+    <p id="uv-msg">I witnessed this or experienced something similar. (Upvoting increases confidence score anonymously).</p>
+  </div>
+
+  <div class="comment-section">
+    <h3 style="margin-bottom:24px;font-size:1.4rem">Public Comments (2)</h3>
+    
+    <div class="comment-input-wrap">
+      <textarea class="comment-input" id="cmt-input" placeholder="Add an anonymous comment to provide more context or evidence..."></textarea>
+      <div class="comment-actions">
+        <button class="btn btn-secondary" onclick="postComment()">Post Comment</button>
+      </div>
+    </div>
+    
+    <div id="comments-list">
+      <div class="comment-box">
+        <div class="comment-header">
+          <div class="comment-author">
+            👤 Anonymous <span class="comment-anon-badge">Verified User</span>
+          </div>
+          <div class="comment-time">1 day ago</div>
+        </div>
+        <div class="comment-text">
+          I can confirm this happened to me as well at the exact same Yatayat office last week. They demanded Rs. 10,000 for a car license trial pass despite a perfect figure-8. I didn't have audio evidence though. Good job recording it!
+        </div>
+      </div>
+      
+      <div class="comment-box">
+        <div class="comment-header">
+          <div class="comment-author">
+            👤 Anonymous <span class="comment-anon-badge">CIAA Monitor</span>
+          </div>
+          <div class="comment-time">5 hours ago</div>
+        </div>
+        <div class="comment-text">
+          Thank you for providing the evidence. We are tracking reports from this branch and this recording will serve as critical auxiliary proof. 
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-overlay" id="ev-modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="flex-between" style="margin-bottom:16px">
+      <h3 id="modal-title">Evidence Preview</h3>
+      <button class="btn-ghost" onclick="closeModal()" style="font-size:1.2rem;padding:0 8px">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <div style="font-size:3rem;margin-bottom:16px">🔒</div>
+      <p style="font-weight:600">File Encrypted — Preview Unavailable</p>
+      <p class="text-secondary" style="font-size:.85rem;margin-top:8px;max-width:300px;margin-left:auto;margin-right:auto">This evidence is securely stored and can only be accessed by authorized investigating officers.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container">Khulasaa · Anonymous Civic Reporting · Kathmandu University</div></footer>
+
+<script>
+let uvCount=47,voted=false,conf=82;
+const r=42,circ=2*Math.PI*r;
+
+function toggleTheme(){const d=document.documentElement;const dark=d.getAttribute('data-theme')==='dark';d.setAttribute('data-theme',dark?'':'dark');document.getElementById('theme-btn').textContent=dark?'☀️':'🌙';localStorage.setItem('khulasaa-theme',dark?'light':'dark');}
+(function(){const t=localStorage.getItem('khulasaa-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');document.getElementById('theme-btn').textContent='🌙';}})();
+
+window.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>{
+    document.getElementById('main-arc').style.strokeDasharray=Math.round(circ*(conf/100))+' '+Math.round(circ);
+    animCount('conf-num',conf,1000);
+  },300);
+});
+
+function animCount(id,target,dur){
+  const el=document.getElementById(id);if(!el)return;
+  let s=0;const step=Math.ceil(target/(dur/16));
+  const iv=setInterval(()=>{s+=step;if(s>=target){s=target;clearInterval(iv);}el.textContent=s+'%';},16);
+}
+
+function mainUpvote(){
+  if(voted)return;voted=true;uvCount++;
+  const btn=document.getElementById('main-uvbtn');
+  document.getElementById('uv-count').textContent=uvCount;
+  btn.style.background='var(--green)';btn.style.borderColor='var(--green)';
+  document.getElementById('uv-msg').innerHTML='<span style="color:var(--green);font-weight:600">✓ Corroborated</span>. Thank you for validating this report.';
+  conf=Math.min(94,conf+2);
+  document.getElementById('main-arc').style.strokeDasharray=Math.round(circ*(conf/100))+' '+Math.round(circ);
+  document.getElementById('conf-num').textContent=conf+'%';
+  for(let i=0;i<12;i++){const s=document.createElement('div');s.className='spark';s.style.setProperty('--sx',(Math.random()*60-30)+'px');s.style.setProperty('--sy',(-Math.random()*40-20)+'px');s.style.left='15px';s.style.top='50%';btn.appendChild(s);setTimeout(()=>s.remove(),600);}
+}
+
+function copyLink(){const b=event.target;navigator.clipboard.writeText(window.location.href).catch(()=>{});b.textContent='✓ Copied!';setTimeout(()=>b.textContent='🔗 Share Link',2000);}
+function previewEvidence(type){document.getElementById('ev-modal').classList.add('show');}
+function closeModal(){document.getElementById('ev-modal').classList.remove('show');}
+
+function postComment(){
+  const inp=document.getElementById('cmt-input');
+  const txt=inp.value.trim();
+  if(!txt){alert('Please write a comment first.');return;}
+  const list=document.getElementById('comments-list');
+  const html=`<div class="comment-box" style="animation:fadeUp 0.3s ease">
+    <div class="comment-header">
+      <div class="comment-author">👤 Anonymous <span class="comment-anon-badge">Just now</span></div>
+      <div class="comment-time">Just now</div>
+    </div>
+    <div class="comment-text">${txt.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+  </div>`;
+  list.insertAdjacentHTML('afterbegin',html);
+  inp.value='';
+}
+</script>
+</body>
+</html>

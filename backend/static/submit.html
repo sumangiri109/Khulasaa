@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Report - KHULASAA</title>
+  <link rel="stylesheet" href="/static/styles.css?v=20260524-ui2">
+  <script defer src="/static/app.js?v=20260524-ui2"></script>
+</head>
+<body data-page="submit">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">K</span><span>KHULASAA</span></a>
+    <nav class="nav">
+      <a href="/" data-nav="home">Home</a><a href="/static/submit.html" data-nav="submit">Report</a><a href="/static/feed.html" data-nav="feed">Feed</a><a href="/static/heatmap.html" data-nav="heatmap">Map</a><a href="/static/scorecards.html" data-nav="scorecards">Scores</a><a href="/static/admin.html" data-nav="admin">Intel</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-head">
+      <p class="eyebrow">Encrypted anonymous intake</p>
+      <h1>Report safely, one protected step at a time.</h1>
+      <p>A calm multi-step wizard for people reporting under pressure. No personal identity fields are required.</p>
+    </section>
+    <section class="grid-two">
+      <form class="form-panel form-grid" id="report-form">
+        <div class="wizard-steps wide">
+          <div class="wizard-step active">1 Identity shield</div>
+          <div class="wizard-step">2 Incident data</div>
+          <div class="wizard-step">3 Evidence vault</div>
+          <div class="wizard-step">4 AI review</div>
+        </div>
+        <label>Anonymous identity mode
+          <select name="identityMode"><option>Fully anonymous citizen</option><option>Protected witness</option><option>Institution insider</option></select>
+        </label>
+        <label>Institution
+          <select id="institution" name="institution" required></select>
+        </label>
+        <label>District
+          <select id="district" name="district" required></select>
+        </label>
+        <label>Bribe amount in NPR
+          <input name="bribeAmount" type="number" min="0" step="100" value="0">
+        </label>
+        <label>Latitude
+          <input id="lat" name="lat" type="number" step="0.000001" required>
+        </label>
+        <label>Longitude
+          <input id="lng" name="lng" type="number" step="0.000001" required>
+        </label>
+        
+        <!-- HIDDEN FILE INPUTS FOR INDIVIDUAL MEDIA UPLOADS -->
+        <input type="file" id="photo-file-input" accept="image/*" class="hidden">
+        <input type="file" id="audio-file-input" accept="audio/*" class="hidden">
+        <input type="file" id="video-file-input" accept="video/*" class="hidden">
+        
+        <!-- MULTIMEDIA VAULT PANEL -->
+        <div class="evidence-vault-container wide">
+          <div class="vault-header">
+            <strong>🔒 Encrypted Civic Evidence Vault</strong>
+            <p class="muted" style="margin:4px 0 0;font-size:13px">Attach files or capture real-time evidence safely. Zero PII is stored.</p>
+          </div>
+          
+          <!-- OPTION BUTTONS: PHOTO, AUDIO, VIDEO -->
+          <div class="evidence-options-grid">
+            <button type="button" class="evidence-btn" id="btn-photo-mode">
+              <span class="icon">📸</span>
+              <span>Photo Intake</span>
+            </button>
+            <button type="button" class="evidence-btn" id="btn-audio-mode">
+              <span class="icon">🎙️</span>
+              <span>Audio Intake</span>
+            </button>
+            <button type="button" class="evidence-btn" id="btn-video-mode">
+              <span class="icon">🎥</span>
+              <span>Video Intake</span>
+            </button>
+          </div>
+          
+          <!-- INTERACTIVE LIVE FEED CHANNELS (HIDDEN BY DEFAULT) -->
+          <div id="live-media-panel" class="hidden">
+            <!-- Camera panel -->
+            <div id="camera-capture-channel" class="media-capture-panel hidden">
+              <video id="webcam-preview" autoplay playsinline class="camera-feed"></video>
+              <canvas id="photo-canvas" class="hidden"></canvas>
+              <div class="capture-controls">
+                <button type="button" class="capture-btn snap" id="btn-snap-photo">Snap Photo</button>
+                <button type="button" class="capture-btn snap" id="btn-upload-photo-file">Choose File</button>
+                <button type="button" class="capture-btn cancel" id="btn-cancel-camera">Cancel</button>
+              </div>
+            </div>
+            
+            <!-- Audio voice recording panel -->
+            <div id="audio-record-channel" class="audio-recording-panel hidden">
+              <div class="record-indicator">
+                <span class="record-dot-pulse"></span>
+                <span id="audio-record-status">Microphone Ready</span>
+              </div>
+              <div class="recording-timer" id="audio-timer">00:00</div>
+              <div class="row" style="gap:10px">
+                <button type="button" class="btn small" id="btn-start-audio" style="background:#18a363;color:#fff;border:none">Record</button>
+                <button type="button" class="btn small" id="btn-stop-audio" style="background:#d94a4a;color:#fff;border:none" disabled>Stop</button>
+                <button type="button" class="btn small" id="btn-upload-audio-file">Choose File</button>
+                <button type="button" class="btn small" id="btn-cancel-audio" style="background:#737891;color:#fff;border:none">Cancel</button>
+              </div>
+            </div>
+            
+            <!-- Video camera panel -->
+            <div id="video-capture-channel" class="media-capture-panel hidden">
+              <video id="video-preview" autoplay playsinline class="camera-feed"></video>
+              <div class="capture-controls">
+                <button type="button" class="capture-btn snap" id="btn-start-video-rec" style="background:#18a363">Start Rec</button>
+                <button type="button" class="capture-btn snap" id="btn-stop-video-rec" style="background:#d94a4a" disabled>Stop Rec</button>
+                <button type="button" class="capture-btn snap" id="btn-upload-video-file">Choose File</button>
+                <button type="button" class="capture-btn cancel" id="btn-cancel-video">Cancel</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- ATTACHED PREVIEW GRID -->
+          <div class="media-previews-grid" id="media-previews">
+            <!-- Dynamically populated previews of uploaded photo, audio, video -->
+          </div>
+          
+          <!-- COMPATIBILITY FIELD FOR FORMDATA -->
+          <input name="evidenceUrl" id="evidenceUrl" type="hidden">
+          <input name="evidencePhoto" id="evidencePhoto" type="hidden">
+          <input name="evidenceAudio" id="evidenceAudio" type="hidden">
+          <input name="evidenceVideo" id="evidenceVideo" type="hidden">
+        </div>
+        <label class="wide">Describe the incident
+          <textarea name="description" minlength="10" required placeholder="What happened, where, when, who was involved, and what was demanded? Avoid your personal identity."></textarea>
+        </label>
+        <button class="btn danger wide" type="submit">Submit Protected Report</button>
+      </form>
+      <aside class="side-panel">
+        <p class="eyebrow">Safety reassurance</p>
+        <h2>You are not the story. The evidence is.</h2>
+        <ul class="check-list">
+          <li>Anonymous mode enabled by default</li>
+          <li>AI duplicate scan runs before publication</li>
+          <li>Confidence score updates through community validation</li>
+          <li>Evidence references stay separate from identity</li>
+        </ul>
+        <div id="result" class="mini-card hidden" style="margin-top:16px"></div>
+      </aside>
+    </section>
+  </main>
+  <a class="fab" href="/static/submit.html">+</a>
+  <nav class="bottom-nav"><a href="/" data-nav="home">Home</a><a href="/static/submit.html" data-nav="submit">Report</a><a href="/static/feed.html" data-nav="feed">Feed</a><a href="/static/heatmap.html" data-nav="heatmap">Map</a><a href="/static/admin.html" data-nav="admin">Intel</a></nav>
+</body>
+</html>

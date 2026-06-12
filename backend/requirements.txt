@@ -1,0 +1,8 @@
+fastapi>=0.110.0
+uvicorn[standard]
+httpx
+pandas
+numpy
+scikit-learn
+pydantic
+python-dotenv
