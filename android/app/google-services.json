@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "255919354543",
+    "project_id": "khulasaa-bbff0",
+    "storage_bucket": "khulasaa-bbff0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255919354543:android:3ae7632db049a78e5c9a5a",
+        "android_client_info": {
+          "package_name": "com.example.khulasaa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcmchZTU4zdH3EANQLHQ42LzSuMSZveNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
