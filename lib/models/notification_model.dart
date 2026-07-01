@@ -8,15 +8,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // ============================================================
 
 enum NotificationType {
-  spikeAlert,  // AI detected corruption surge
-  general,      // Manual announcement
-  system,       // App update or maintenance
+  spikeAlert, // AI detected corruption surge
+  general, // Manual announcement
+  system, // App update or maintenance
 }
 
 enum RecipientScope {
-  allNepal,    // Everyone — default for now
-  district,     // Future: district-specific
-  institution,  // Future: institution-specific
+  allNepal, // Everyone — default for now
+  district, // Future: district-specific
+  institution, // Future: institution-specific
 }
 
 class NotificationModel {
@@ -24,8 +24,8 @@ class NotificationModel {
   final String title;
   final String body;
   final NotificationType type;
-  final String? institutionId;   // Which institution triggered — null for general
-  final String? hotspotId;       // Which hotspot triggered — null for general
+  final String? institutionId; // Which institution triggered — null for general
+  final String? hotspotId; // Which hotspot triggered — null for general
   final DateTime sentAt;
   final RecipientScope recipientScope;
 
@@ -43,13 +43,13 @@ class NotificationModel {
   // ── Convert TO Firestore map ──────────────────────────────
   Map<String, dynamic> toMap() {
     return {
-      'title':           title,
-      'body':            body,
-      'type':            type.name,
-      'institutionId':   institutionId,
-      'hotspotId':       hotspotId,
-      'sentAt':          Timestamp.fromDate(sentAt),
-      'recipientScope':  recipientScope.name,
+      'title': title,
+      'body': body,
+      'type': type.name,
+      'institutionId': institutionId,
+      'hotspotId': hotspotId,
+      'sentAt': Timestamp.fromDate(sentAt),
+      'recipientScope': recipientScope.name,
     };
   }
 
@@ -57,32 +57,38 @@ class NotificationModel {
   factory NotificationModel.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
     return NotificationModel(
-      notificationId:  doc.id,
-      title:           data['title']           ?? '',
-      body:            data['body']            ?? '',
-      type:            _parseType(data['type']),
-      institutionId:   data['institutionId'],
-      hotspotId:       data['hotspotId'],
-      sentAt:          data['sentAt'] != null
-                         ? (data['sentAt'] as Timestamp).toDate()
-                         : DateTime.now(),
-      recipientScope:  _parseScope(data['recipientScope']),
+      notificationId: doc.id,
+      title: data['title'] ?? '',
+      body: data['body'] ?? '',
+      type: _parseType(data['type']),
+      institutionId: data['institutionId'],
+      hotspotId: data['hotspotId'],
+      sentAt: data['sentAt'] != null
+          ? (data['sentAt'] as Timestamp).toDate()
+          : DateTime.now(),
+      recipientScope: _parseScope(data['recipientScope']),
     );
   }
 
   static NotificationType _parseType(String? value) {
     switch (value) {
-      case 'general': return NotificationType.general;
-      case 'system':  return NotificationType.system;
-      default:        return NotificationType.spikeAlert;
+      case 'general':
+        return NotificationType.general;
+      case 'system':
+        return NotificationType.system;
+      default:
+        return NotificationType.spikeAlert;
     }
   }
 
   static RecipientScope _parseScope(String? value) {
     switch (value) {
-      case 'district':    return RecipientScope.district;
-      case 'institution': return RecipientScope.institution;
-      default:            return RecipientScope.allNepal;
+      case 'district':
+        return RecipientScope.district;
+      case 'institution':
+        return RecipientScope.institution;
+      default:
+        return RecipientScope.allNepal;
     }
   }
 
